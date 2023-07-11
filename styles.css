@@ -3,3 +3,77 @@
     padding: 0;
     box-sizing: border-box;
   }
+  
+  #row1 {
+    color: red;
+  }
+  
+  #row2 {
+    color: darkblue;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #chasis {
+    width: 20%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: grey;
+  }
+  
+  #screen {
+    height: 200px;
+    text-align: right;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 10px 0px;
+  }
+  
+  p {
+    font-size: 50px;
+  }
+  
+  button {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+  
+  button:hover {
+    background-color: lightgrey;
+  }
+  
+  #buttons1 {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  
+  #buttons2 {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .button1 {
+    flex-basis: 50%;
+    padding: 10px;
+  }
+  
+  .button2 {
+    flex-basis: 24.1%;
+    padding: 10px 0px;
+  }
+  
