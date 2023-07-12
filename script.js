@@ -59,3 +59,11 @@ function selectNumber(e){
     uiRow2.innerHTML = currentNumber;
   
   }
+
+  function selectEqual(){
+    if(previousNumber == "" || operator == ""){
+      return;
+    }else{
+      operate(previousNumber, operator, currentNumber);
+    }
+  }
