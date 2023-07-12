@@ -49,3 +49,13 @@ function selectNumber(e){
     }
   
   }
+
+  function selectOperator(e){
+
+    previousNumber = currentNumber;
+    operator = e.target.id;
+    currentNumber = "";
+    uiRow1.innerHTML = `${previousNumber} ${e.target.textContent}`;
+    uiRow2.innerHTML = currentNumber;
+  
+  }
