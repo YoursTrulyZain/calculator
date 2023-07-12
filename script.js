@@ -155,3 +155,13 @@ function selectNumber(e){
     uiRow2.innerHTML = currentNumber;
     
   }
+
+  function printError(){
+
+    uiRow1.innerHTML = "";
+    uiRow2.innerHTML = "Cannot divide by zero";
+    currentNumber = "";
+    previousNumber = "";
+    operator = "";
+  
+  }
