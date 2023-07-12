@@ -127,3 +127,17 @@ function selectNumber(e){
     uiRow2.innerHTML = currentNumber;
     
   }
+
+  function multiply(operand1, operand2){
+
+    let tempPrevious = Number(operand1);
+    let tempCurrent = Number(operand2);
+    let result = tempPrevious * tempCurrent;
+    uiRow1.innerHTML = "";
+    if(result.toString().includes(".")){
+      result = result.toFixed(2);
+    }
+    currentNumber = result.toString();
+    uiRow2.innerHTML = currentNumber;
+   
+  }
