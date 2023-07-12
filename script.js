@@ -25,159 +25,184 @@ equalButton.addEventListener("click", selectEqual);
 const decimalButton = document.querySelector("#dec");
 decimalButton.addEventListener("click", selectDecimal);
 
+
 function selectNumber(e){
 
-    if(currentNumber.length == 9){
-      return;
-    }
-  
-    currentNumber += e.target.id;
+  if(currentNumber.length == 9){
+    return;
+  }
+
+  currentNumber += e.target.id;
+  uiRow2.innerHTML = currentNumber;
+
+}
+
+function selectZero(){
+
+  if(currentNumber.length == 9){
+    return;
+  }
+  if(currentNumber == "0"){
+    return;
+  }else{
+    currentNumber += "0";
+    uiRow2.innerHTML = currentNumber;
+  }
+
+}
+
+function selectOperator(e){
+
+  previousNumber = currentNumber;
+  operator = e.target.id;
+  currentNumber = "";
+  uiRow1.innerHTML = `${previousNumber} ${e.target.textContent}`;
+  uiRow2.innerHTML = currentNumber;
+
+}
+
+function selectClear(){
+
+  previousNumber = "";
+  currentNumber = "";
+  operator = "";
+  uiRow1.innerHTML = "";
+  uiRow2.innerHTML = "";
+
+}
+
+function selectDelete(){
+
+  if(currentNumber.length == 0){
+
+    return;
+
+  }else {
+
+    currentNumber = currentNumber.substring(0,currentNumber.length-1);
     uiRow2.innerHTML = currentNumber;
   
   }
+}
 
-  function selectZero(){
+function selectEqual(){
+  if(previousNumber == "" || operator == ""){
+    return;
+  }else{
+    operate(previousNumber, operator, currentNumber);
+  }
+}
 
-    if(currentNumber.length == 9){
-      return;
-    }
-    if(currentNumber == "0"){
-      return;
+function operate(operand1, operator, operand2){
+
+  if(operator == "+"){
+
+    add(operand1, operand2);
+
+  }else if(operator == "-"){
+
+    subtract(operand1, operand2);
+
+  }else if(operator == "*"){
+
+    multiply(operand1, operand2);
+
+  }else if(operator == "/"){
+
+    if(operand2 == "0"){
+
+      printError();
+
     }else{
-      currentNumber += "0";
-      uiRow2.innerHTML = currentNumber;
+
+      divide(operand1, operand2);
+
     }
-  
+
+  }else{
+    return;
   }
 
-  function selectOperator(e){
+}
 
-    previousNumber = currentNumber;
-    operator = e.target.id;
-    currentNumber = "";
-    uiRow1.innerHTML = `${previousNumber} ${e.target.textContent}`;
+function add(operand1, operand2){
+
+  let tempPrevious = Number(operand1);
+  let tempCurrent = Number(operand2);
+  let result = tempPrevious + tempCurrent;
+  uiRow1.innerHTML = "";
+  if(result.toString().includes(".")){
+    result = result.toFixed(2);
+  }
+  currentNumber = result.toString();
+  uiRow2.innerHTML = currentNumber;
+
+}
+
+function subtract(operand1, operand2){
+
+  let tempPrevious = Number(operand1);
+  let tempCurrent = Number(operand2);
+  let result = tempPrevious - tempCurrent;
+  uiRow1.innerHTML = "";
+  if(result.toString().includes(".")){
+    result = result.toFixed(2);
+  }
+  currentNumber = result.toString();
+  uiRow2.innerHTML = currentNumber;
+  
+}
+
+function multiply(operand1, operand2){
+
+  let tempPrevious = Number(operand1);
+  let tempCurrent = Number(operand2);
+  let result = tempPrevious * tempCurrent;
+  uiRow1.innerHTML = "";
+  if(result.toString().includes(".")){
+    result = result.toFixed(2);
+  }
+  currentNumber = result.toString();
+  uiRow2.innerHTML = currentNumber;
+ 
+}
+
+function divide(operand1, operand2){
+
+  let tempPrevious = Number(operand1);
+  let tempCurrent = Number(operand2);
+  let result = tempPrevious / tempCurrent;
+  uiRow1.innerHTML = "";
+  if(result.toString().includes(".")){
+    result = result.toFixed(2);
+  }
+  currentNumber = result.toString();
+  uiRow2.innerHTML = currentNumber;
+  
+}
+
+function printError(){
+
+  uiRow1.innerHTML = "";
+  uiRow2.innerHTML = "Cannot divide by zero";
+  currentNumber = "";
+  previousNumber = "";
+  operator = "";
+
+}
+
+function selectDecimal(){
+
+  if(currentNumber.length == 9){
+    return;
+  }
+  
+  if(currentNumber.includes(".") || currentNumber ==""){
+    return;
+  }else{
+
+    currentNumber += ".";
     uiRow2.innerHTML = currentNumber;
-  
+
   }
-
-  function selectEqual(){
-    if(previousNumber == "" || operator == ""){
-      return;
-    }else{
-      operate(previousNumber, operator, currentNumber);
-    }
-  }
-
-  function operate(operand1, operator, operand2){
-
-    if(operator == "+"){
-  
-      add(operand1, operand2);
-  
-    }else if(operator == "-"){
-  
-      subtract(operand1, operand2);
-  
-    }else if(operator == "*"){
-  
-      multiply(operand1, operand2);
-  
-    }else if(operator == "/"){
-  
-      if(operand2 == "0"){
-  
-        printError();
-  
-      }else{
-  
-        divide(operand1, operand2);
-  
-      }
-  
-    }else{
-      return;
-    }
-  
-  }
-
-  function add(operand1, operand2){
-
-    let tempPrevious = Number(operand1);
-    let tempCurrent = Number(operand2);
-    let result = tempPrevious + tempCurrent;
-    uiRow1.innerHTML = "";
-    if(result.toString().includes(".")){
-      result = result.toFixed(2);
-    }
-    currentNumber = result.toString();
-    uiRow2.innerHTML = currentNumber;
-  
-  }
-
-  function subtract(operand1, operand2){
-
-    let tempPrevious = Number(operand1);
-    let tempCurrent = Number(operand2);
-    let result = tempPrevious - tempCurrent;
-    uiRow1.innerHTML = "";
-    if(result.toString().includes(".")){
-      result = result.toFixed(2);
-    }
-    currentNumber = result.toString();
-    uiRow2.innerHTML = currentNumber;
-    
-  }
-
-  function multiply(operand1, operand2){
-
-    let tempPrevious = Number(operand1);
-    let tempCurrent = Number(operand2);
-    let result = tempPrevious * tempCurrent;
-    uiRow1.innerHTML = "";
-    if(result.toString().includes(".")){
-      result = result.toFixed(2);
-    }
-    currentNumber = result.toString();
-    uiRow2.innerHTML = currentNumber;
-   
-  }
-
-  function divide(operand1, operand2){
-
-    let tempPrevious = Number(operand1);
-    let tempCurrent = Number(operand2);
-    let result = tempPrevious / tempCurrent;
-    uiRow1.innerHTML = "";
-    if(result.toString().includes(".")){
-      result = result.toFixed(2);
-    }
-    currentNumber = result.toString();
-    uiRow2.innerHTML = currentNumber;
-    
-  }
-
-  function printError(){
-
-    uiRow1.innerHTML = "";
-    uiRow2.innerHTML = "Cannot divide by zero";
-    currentNumber = "";
-    previousNumber = "";
-    operator = "";
-  
-  }
-
-  function selectDecimal(){
-
-    if(currentNumber.length == 9){
-      return;
-    }
-    
-    if(currentNumber.includes(".") || currentNumber ==""){
-      return;
-    }else{
-  
-      currentNumber += ".";
-      uiRow2.innerHTML = currentNumber;
-  
-    }
-  }
+}
