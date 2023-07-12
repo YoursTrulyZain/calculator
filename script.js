@@ -165,3 +165,19 @@ function selectNumber(e){
     operator = "";
   
   }
+
+  function selectDecimal(){
+
+    if(currentNumber.length == 9){
+      return;
+    }
+    
+    if(currentNumber.includes(".") || currentNumber ==""){
+      return;
+    }else{
+  
+      currentNumber += ".";
+      uiRow2.innerHTML = currentNumber;
+  
+    }
+  }
