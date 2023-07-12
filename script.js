@@ -35,3 +35,17 @@ function selectNumber(e){
     uiRow2.innerHTML = currentNumber;
   
   }
+
+  function selectZero(){
+
+    if(currentNumber.length == 9){
+      return;
+    }
+    if(currentNumber == "0"){
+      return;
+    }else{
+      currentNumber += "0";
+      uiRow2.innerHTML = currentNumber;
+    }
+  
+  }
