@@ -24,3 +24,14 @@ equalButton.addEventListener("click", selectEqual);
 
 const decimalButton = document.querySelector("#dec");
 decimalButton.addEventListener("click", selectDecimal);
+
+function selectNumber(e){
+
+    if(currentNumber.length == 9){
+      return;
+    }
+  
+    currentNumber += e.target.id;
+    uiRow2.innerHTML = currentNumber;
+  
+  }
